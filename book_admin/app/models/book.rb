@@ -1,4 +1,10 @@
 class Book < ApplicationRecord
+  enum sales_status: {
+    reservation: 0,
+    now_on_sales: 1,
+    end_of_print: 2,
+  }
+
   scope :costly, -> { where("price > ?", 3000) }
   scope :written_about, ->(thema) { where("name like ?", "%#{thema}%") }
 
